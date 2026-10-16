@@ -1,0 +1,43 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { breadcrumbSchema } from '../lib';
+import { SITE_NAME } from '../consts';
+
+const crumbs = [
+	{ name: 'Home', href: '/' },
+	{ name: 'Privacy', href: '/privacy/' },
+];
+---
+
+<Base
+	title={`Privacy Policy | ${SITE_NAME}`}
+	description={`What ${SITE_NAME} collects when you visit: anonymous usage statistics through Google Analytics, no accounts, no forms and no advertising.`}
+	schema={[breadcrumbSchema(crumbs, Astro.site)]}
+>
+	<Breadcrumbs crumbs={crumbs} />
+	<h1>Privacy policy</h1>
+	<p class="lead">{SITE_NAME} has no accounts, sign-up forms or advertising. The only data we collect is usage statistics.</p>
+
+	<h2>Google Analytics</h2>
+	<p>
+		We use Google Analytics 4 to see which pages people read, how they found the site and how they use it. Google Analytics
+		sets cookies and collects data such as the pages you visit, your approximate location, your device and browser, and the
+		site you came from. We use this only to improve the site. We do not use it to identify you, and we do not sell it.
+	</p>
+	<p>
+		Google processes this data under its own terms. You can read
+		<a href="https://policies.google.com/technologies/partner-sites" rel="nofollow">how Google uses data from sites that use its services</a>
+		and block Google Analytics with the
+		<a href="https://tools.google.com/dlpage/gaoptout" rel="nofollow">Google Analytics opt-out browser add-on</a>.
+	</p>
+
+	<h2>Calculators</h2>
+	<p>Numbers you enter in our calculators stay in your browser. They are not sent to us.</p>
+
+	<h2>Links to other sites</h2>
+	<p>Our guides link to regulators, payment providers and casinos. Their own privacy policies apply once you leave this site.</p>
+
+	<h2>Changes</h2>
+	<p>If we start collecting anything else, we will update this page first.</p>
+</Base>

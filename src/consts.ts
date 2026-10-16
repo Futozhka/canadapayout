@@ -17,4 +17,7 @@ export const SITE_INDEXABLE = true;
 // Google Search Console HTML-tag verification code (content="..." only). Empty = no tag.
 export const GOOGLE_SITE_VERIFICATION = 'b-BZFLJyUtfiCofhsuGcRU43l83-ffiIgndGY-Q6kMw';
 
+// Google Analytics 4 measurement ID. Empty = no analytics script.
+export const GA_MEASUREMENT_ID = 'G-WEXL4EFQFJ';
+
 export const MIN_AGE = '19+';

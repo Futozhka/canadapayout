@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import { SITE_NAME, SITE_INDEXABLE, GOOGLE_SITE_VERIFICATION } from '../consts';
+import { SITE_NAME, SITE_INDEXABLE, GOOGLE_SITE_VERIFICATION, GA_MEASUREMENT_ID } from '../consts';
 
 interface Props {
 	title: string;
@@ -34,3 +34,17 @@ const robots = !SITE_INDEXABLE || noindex ? 'noindex,follow' : 'index,follow,max
 <meta name="twitter:card" content="summary" />
 
 {schema.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
+
+{GA_MEASUREMENT_ID && (
+	<>
+		<script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}></script>
+		<script is:inline define:vars={{ id: GA_MEASUREMENT_ID }}>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag('js', new Date());
+			gtag('config', id);
+		</script>
+	</>
+)}
