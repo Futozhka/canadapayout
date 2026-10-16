@@ -3,7 +3,7 @@
 export const SITE_NAME = 'CanadaPayout';
 export const SITE_TAGLINE = 'Casino withdrawals in Canada, explained';
 export const SITE_DESCRIPTION =
-	'Plain-language guides to getting paid by online casinos in Canada: withdrawal methods, real payout times, bonus wagering and what to do when a cashout gets stuck.';
+	'Plain-language guides to getting paid by online casinos in Canada: withdrawal methods, payout rules, wagering and what to do when a cashout gets stuck.';
 
 // Shown as the author of every guide. A team name, not a person: no personal name is published.
 export const AUTHOR = {
