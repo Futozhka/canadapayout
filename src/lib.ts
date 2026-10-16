@@ -52,7 +52,7 @@ export function articleSchema(opts: {
 		mainEntityOfPage: opts.url,
 		datePublished: opts.published.toISOString(),
 		dateModified: (opts.updated ?? opts.published).toISOString(),
-		author: { '@type': 'Person', name: AUTHOR.name },
+		author: { '@type': 'Organization', name: AUTHOR.name },
 		publisher: { '@type': 'Organization', name: SITE_NAME },
 	};
 }

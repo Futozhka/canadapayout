@@ -2,7 +2,6 @@
 import Base from '../layouts/Base.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import { breadcrumbSchema } from '../lib';
-import { AUTHOR } from '../consts';
 
 const crumbs = [
 	{ name: 'Home', href: '/' },
@@ -41,5 +40,4 @@ const crumbs = [
 	<h2>Independence</h2>
 	<p>We do not operate a casino. At the moment we have no commercial relationship with any casino or payment provider.</p>
 
-	<p class="muted">Edited by {AUTHOR.name}.</p>
 </Base>

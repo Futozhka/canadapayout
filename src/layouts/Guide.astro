@@ -33,7 +33,7 @@ if (faq.length) schema.push(faqSchema(faq));
 	<article class="guide">
 		<h1>{h1 ?? title}</h1>
 		<p class="byline">
-			By {AUTHOR.name}, {AUTHOR.role} · Last updated <time datetime={(updated ?? published).toISOString()}>{formatDate(updated ?? published)}</time>
+			By the {AUTHOR.name} · Last updated <time datetime={(updated ?? published).toISOString()}>{formatDate(updated ?? published)}</time>
 		</p>
 		<div class="prose">
 			<slot />
