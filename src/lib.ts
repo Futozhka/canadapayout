@@ -3,6 +3,13 @@ import { SITE_NAME, AUTHOR } from './consts';
 
 export async function getPublishedGuides() {
 	const all = await getCollection('guides', ({ data }) => !data.draft);
+	// A published guide must not contain unresolved fact-check markers.
+	for (const g of all) {
+		const text = `${g.body ?? ''} ${JSON.stringify(g.data.faq)}`;
+		if (text.includes('[CHECK')) {
+			throw new Error(`Guide "${g.id}" is published but still contains [CHECK] markers. Resolve them or set draft: true.`);
+		}
+	}
 	return all.sort((a, b) => b.data.published.valueOf() - a.data.published.valueOf());
 }
 
