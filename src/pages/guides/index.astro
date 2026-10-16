@@ -1,0 +1,32 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { getPublishedGuides, breadcrumbSchema } from '../../lib';
+
+const guides = await getPublishedGuides();
+const crumbs = [
+	{ name: 'Home', href: '/' },
+	{ name: 'Guides', href: '/guides/' },
+];
+---
+
+<Base
+	title="Casino Withdrawal Guides for Canadian Players"
+	description="Step-by-step guides to casino withdrawals in Canada: payment methods, payout times, ID verification, bonus wagering and stuck cashouts."
+	schema={[breadcrumbSchema(crumbs, Astro.site)]}
+>
+	<Breadcrumbs crumbs={crumbs} />
+	<h1>Guides</h1>
+	{guides.length > 0 ? (
+		<ul class="cards">
+			{guides.map((g) => (
+				<li>
+					<a href={`/guides/${g.id}/`}><strong>{g.data.h1 ?? g.data.title}</strong></a>
+					<p>{g.data.description}</p>
+				</li>
+			))}
+		</ul>
+	) : (
+		<p class="muted">The first guide is in review.</p>
+	)}
+</Base>

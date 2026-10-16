@@ -1,0 +1,45 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { breadcrumbSchema } from '../lib';
+import { AUTHOR } from '../consts';
+
+const crumbs = [
+	{ name: 'Home', href: '/' },
+	{ name: 'How we test', href: '/how-we-test/' },
+];
+---
+
+<Base
+	title="How We Research Casino Withdrawal Information"
+	description="How CanadaPayout checks payout times, limits and bonus terms: primary sources only, a check date on every number, and a review every three months."
+	schema={[breadcrumbSchema(crumbs, Astro.site)]}
+>
+	<Breadcrumbs crumbs={crumbs} />
+	<h1>How we research and check our information</h1>
+	<p class="lead">Every number on this site comes from a primary source, carries the date we checked it, and is re-checked every three months.</p>
+
+	<h2>Where our numbers come from</h2>
+	<ul>
+		<li>Payout times, limits and fees: the casino's own banking and terms pages, and the payment provider's website.</li>
+		<li>Laws and taxes: government and regulator sources, such as Canada.ca, AGCO and iGaming Ontario.</li>
+		<li>Player questions: real threads on Reddit and other forums. We use them to decide what to explain, not as a source of facts.</li>
+	</ul>
+
+	<h2>How we use AI</h2>
+	<p>
+		We use AI tools to draft text from an outline and a table of checked facts. A person checks every number in the draft
+		against that table, removes anything that cannot be verified, and edits the text before it is published.
+	</p>
+
+	<h2>Updates and corrections</h2>
+	<p>
+		Each guide shows when it was last updated. Casino terms change often, so we review every guide at least every three
+		months. If you find an error, tell us and we will check and correct it.
+	</p>
+
+	<h2>Independence</h2>
+	<p>We do not operate a casino. At the moment we have no commercial relationship with any casino or payment provider.</p>
+
+	<p class="muted">Edited by {AUTHOR.name}.</p>
+</Base>

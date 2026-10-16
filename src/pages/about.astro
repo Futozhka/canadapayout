@@ -1,0 +1,25 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { breadcrumbSchema } from '../lib';
+import { SITE_NAME, AUTHOR } from '../consts';
+
+const crumbs = [
+	{ name: 'Home', href: '/' },
+	{ name: 'About', href: '/about/' },
+];
+---
+
+<Base
+	title={`About ${SITE_NAME}`}
+	description={`${SITE_NAME} explains how casino withdrawals work for Canadian players: payment methods, payout times, wagering and what to do when a cashout is delayed.`}
+	schema={[breadcrumbSchema(crumbs, Astro.site)]}
+>
+	<Breadcrumbs crumbs={crumbs} />
+	<h1>About {SITE_NAME}</h1>
+	<p class="lead">
+		{SITE_NAME} answers one question well: how Canadian players get their money out of online casinos, how long it takes,
+		and what to do when it does not arrive.
+	</p>
+	<p>The site is edited by {AUTHOR.name}. Read <a href="/how-we-test/">how we research and check our information</a>.</p>
+</Base>

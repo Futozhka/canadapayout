@@ -1,0 +1,53 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE_NAME, SITE_DESCRIPTION } from '../consts';
+import { getPublishedGuides, absolute } from '../lib';
+
+const guides = await getPublishedGuides();
+const schema = [
+	{
+		'@context': 'https://schema.org',
+		'@type': 'WebSite',
+		name: SITE_NAME,
+		url: absolute('/', Astro.site),
+		description: SITE_DESCRIPTION,
+	},
+];
+---
+
+<Base title={`${SITE_NAME}: Casino Withdrawals in Canada, Explained`} description={SITE_DESCRIPTION} schema={schema}>
+	<section class="hero">
+		<h1>Get paid by online casinos in Canada, without the guesswork</h1>
+		<p class="lead">
+			How withdrawals work, how long each payment method really takes, what bonus wagering means for your cashout, and
+			what to do when a withdrawal gets stuck. Every number on this site comes from a primary source and carries the date
+			we checked it.
+		</p>
+	</section>
+
+	<section aria-labelledby="guides">
+		<h2 id="guides">Guides</h2>
+		{guides.length > 0 ? (
+			<ul class="cards">
+				{guides.map((g) => (
+					<li>
+						<a href={`/guides/${g.id}/`}><strong>{g.data.h1 ?? g.data.title}</strong></a>
+						<p>{g.data.description}</p>
+					</li>
+				))}
+			</ul>
+		) : (
+			<p class="muted">The first guide is in review.</p>
+		)}
+	</section>
+
+	<section aria-labelledby="tools">
+		<h2 id="tools">Tools</h2>
+		<ul class="cards">
+			<li>
+				<a href="/tools/wagering-calculator/"><strong>Wagering requirement calculator</strong></a>
+				<p>Enter your bonus and the 30x, 35x or 40x requirement and see how much you need to bet before you can withdraw.</p>
+			</li>
+		</ul>
+	</section>
+</Base>

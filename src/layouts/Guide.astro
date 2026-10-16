@@ -1,0 +1,63 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Base from './Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { AUTHOR } from '../consts';
+import { getPublishedGuides, breadcrumbSchema, faqSchema, articleSchema, formatDate, absolute } from '../lib';
+
+interface Props { entry: CollectionEntry<'guides'> }
+const { entry } = Astro.props;
+const { title, description, h1, published, updated, faq, related } = entry.data;
+const url = `/guides/${entry.id}/`;
+
+const crumbs = [
+	{ name: 'Home', href: '/' },
+	{ name: 'Guides', href: '/guides/' },
+	{ name: h1 ?? title, href: url },
+];
+
+const allGuides = await getPublishedGuides();
+const relatedGuides = related
+	.map((slug) => allGuides.find((g) => g.id === slug))
+	.filter((g): g is NonNullable<typeof g> => Boolean(g));
+
+const schema: object[] = [
+	articleSchema({ headline: h1 ?? title, description, url: absolute(url, Astro.site), published, updated }),
+	breadcrumbSchema(crumbs, Astro.site),
+];
+if (faq.length) schema.push(faqSchema(faq));
+---
+
+<Base title={title} description={description} type="article" schema={schema}>
+	<Breadcrumbs crumbs={crumbs} />
+	<article class="guide">
+		<h1>{h1 ?? title}</h1>
+		<p class="byline">
+			By {AUTHOR.name}, {AUTHOR.role} · Last updated <time datetime={(updated ?? published).toISOString()}>{formatDate(updated ?? published)}</time>
+		</p>
+		<div class="prose">
+			<slot />
+		</div>
+
+		{faq.length > 0 && (
+			<section class="faq" aria-labelledby="faq">
+				<h2 id="faq">FAQ</h2>
+				{faq.map((f) => (
+					<details>
+						<summary>{f.q}</summary>
+						<p>{f.a}</p>
+					</details>
+				))}
+			</section>
+		)}
+
+		{relatedGuides.length > 0 && (
+			<aside class="related" aria-labelledby="related">
+				<h2 id="related">Related guides</h2>
+				<ul>
+					{relatedGuides.map((g) => <li><a href={`/guides/${g.id}/`}>{g.data.h1 ?? g.data.title}</a></li>)}
+				</ul>
+			</aside>
+		)}
+	</article>
+</Base>

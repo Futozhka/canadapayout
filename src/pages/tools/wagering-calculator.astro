@@ -1,0 +1,132 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { breadcrumbSchema, faqSchema } from '../../lib';
+
+const crumbs = [
+	{ name: 'Home', href: '/' },
+	{ name: 'Wagering calculator', href: '/tools/wagering-calculator/' },
+];
+
+const faq = [
+	{
+		q: 'What does a 35x wagering requirement mean?',
+		a: 'You must place bets worth 35 times the amount the requirement applies to before bonus money or winnings can be withdrawn. On a $100 bonus with 35x on the bonus only, that is $3,500 in total bets.',
+	},
+	{
+		q: 'Does the wagering apply to the bonus or to the bonus plus deposit?',
+		a: 'It depends on the casino. The terms say either "bonus" or "deposit + bonus". With deposit + bonus the amount you must bet can double, so check this line first.',
+	},
+	{
+		q: 'Why do table games count less towards wagering?',
+		a: 'Most casinos count slots at 100% but blackjack, roulette or live games at 0–20%. At 10%, every $10 you bet counts as $1, so the total you must bet is ten times higher.',
+	},
+	{
+		q: 'Is a lower wagering requirement always better?',
+		a: 'Usually, but also check the time limit, the maximum bet while wagering and any cap on how much you can withdraw from bonus winnings.',
+	},
+];
+
+const schema = [breadcrumbSchema(crumbs, Astro.site), faqSchema(faq)];
+---
+
+<Base
+	title="Wagering Requirement Calculator (30x, 35x, 40x)"
+	description="Free wagering requirement calculator: enter your casino bonus, deposit and 30x, 35x or 40x playthrough to see how much you must bet before withdrawing."
+	schema={schema}
+>
+	<Breadcrumbs crumbs={crumbs} />
+	<h1>Wagering requirement calculator</h1>
+	<p class="lead">
+		A wagering (playthrough) requirement is how much you must bet before a casino lets you withdraw bonus money or what you
+		won with it. Enter the numbers from your bonus terms to see the total.
+	</p>
+
+	<form id="wager" class="calc" novalidate>
+		<div class="field">
+			<label for="bonus">Bonus amount (CAD)</label>
+			<input id="bonus" name="bonus" type="number" inputmode="decimal" min="0" step="any" value="100" />
+		</div>
+		<div class="field">
+			<label for="deposit">Your deposit (CAD)</label>
+			<input id="deposit" name="deposit" type="number" inputmode="decimal" min="0" step="any" value="100" />
+		</div>
+		<div class="field">
+			<label for="multiplier">Wagering requirement (×)</label>
+			<input id="multiplier" name="multiplier" type="number" inputmode="decimal" min="0" step="any" value="35" />
+		</div>
+		<div class="field">
+			<label for="appliesTo">Applies to</label>
+			<select id="appliesTo" name="appliesTo">
+				<option value="bonus">Bonus only</option>
+				<option value="both">Deposit + bonus</option>
+			</select>
+		</div>
+		<div class="field">
+			<label for="contribution">Game contribution (%)</label>
+			<input id="contribution" name="contribution" type="number" inputmode="decimal" min="1" max="100" step="any" value="100" />
+		</div>
+		<output id="result" for="bonus deposit multiplier appliesTo contribution" aria-live="polite" class="result">
+			You need to bet <strong>$3,500</strong> in total before you can withdraw.
+		</output>
+	</form>
+
+	<h2>How the calculation works</h2>
+	<p>Total to bet = amount the requirement applies to × wagering multiplier ÷ game contribution.</p>
+	<table>
+		<thead>
+			<tr><th>Bonus terms</th><th>Calculation</th><th>Total to bet</th></tr>
+		</thead>
+		<tbody>
+			<tr><td>$100 bonus, 35x bonus only, slots 100%</td><td>$100 × 35 ÷ 1</td><td>$3,500</td></tr>
+			<tr><td>$100 bonus + $100 deposit, 35x deposit + bonus, slots 100%</td><td>$200 × 35 ÷ 1</td><td>$7,000</td></tr>
+			<tr><td>$100 bonus, 35x bonus only, blackjack 10%</td><td>$100 × 35 ÷ 0.1</td><td>$35,000</td></tr>
+		</tbody>
+	</table>
+
+	<section class="faq" aria-labelledby="faq">
+		<h2 id="faq">FAQ</h2>
+		{faq.map((f) => (
+			<details>
+				<summary>{f.q}</summary>
+				<p>{f.a}</p>
+			</details>
+		))}
+	</section>
+</Base>
+
+<script>
+	const form = document.getElementById('wager') as HTMLFormElement | null;
+	const out = document.getElementById('result');
+	const money = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD', maximumFractionDigits: 0 });
+
+	function num(name: string) {
+		const el = form?.elements.namedItem(name) as HTMLInputElement | HTMLSelectElement | null;
+		return el ? Number(el.value) : NaN;
+	}
+
+	function update() {
+		if (!form || !out) return;
+		const bonus = num('bonus');
+		const deposit = num('deposit');
+		const multiplier = num('multiplier');
+		const contribution = num('contribution');
+		const appliesTo = (form.elements.namedItem('appliesTo') as HTMLSelectElement).value;
+		const base = appliesTo === 'both' ? bonus + deposit : bonus;
+
+		if (![bonus, multiplier, contribution].every(Number.isFinite) || (appliesTo === 'both' && !Number.isFinite(deposit))) {
+			out.textContent = 'Fill in all the numbers to see the result.';
+			return;
+		}
+		if (contribution <= 0 || contribution > 100) {
+			out.textContent = 'Game contribution must be between 1% and 100%.';
+			return;
+		}
+		const total = (base * multiplier) / (contribution / 100);
+		out.innerHTML = `You need to bet <strong>${money.format(total)}</strong> in total before you can withdraw.`;
+	}
+
+	form?.addEventListener('input', update);
+	form?.addEventListener('submit', (e) => e.preventDefault());
+	update();
+</script>

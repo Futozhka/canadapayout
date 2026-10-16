@@ -1,0 +1,22 @@
+---
+import { SITE_NAME, MIN_AGE } from '../consts';
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+	<div class="wrap">
+		<p class="rg">
+			<strong>{MIN_AGE} only.</strong> Gambling should be entertainment, not a way to make money. If it stops being fun,
+			free and confidential help is available from <a href="https://www.connexontario.ca/" rel="nofollow">ConnexOntario</a>
+			and your provincial support service.
+		</p>
+		<nav aria-label="Footer">
+			<ul>
+				<li><a href="/about/">About</a></li>
+				<li><a href="/how-we-test/">How we test</a></li>
+				<li><a href="/guides/">All guides</a></li>
+			</ul>
+		</nav>
+		<p class="small">© {year} {SITE_NAME}. Independent information site. We do not operate any casino.</p>
+	</div>
+</footer>
