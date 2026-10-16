@@ -7,7 +7,7 @@ description: 'Withdrawal methods, the rules Ontario casinos must follow, why cas
 h1: 'How to Withdraw Casino Winnings in Canada'
 published: 2026-10-16
 draft: false
-related: []
+related: ['instadebit-shut-down-alternatives']
 faq:
   - q: 'Can I cancel a pending withdrawal?'
     a: 'Often, yes, while the request is still pending. At OLG, for example, you open Pending Withdrawals in your account and click Cancel next to the request.'
@@ -48,7 +48,7 @@ Casinos do not all offer the same methods, and most do not publish payout times 
 
 If a large Interac withdrawal fails, check your bank's e-Transfer limit before blaming the casino.
 
-**InstaDebit has shut down.** It stopped taking deposits on February 27, 2026, and balances could be withdrawn until April 30, 2026. Any balance left after 28 days of inactivity is sent to the linked bank account. Many casino lists online still recommend it; they are out of date.
+**InstaDebit has shut down.** It stopped taking deposits on February 27, 2026, and balances could be withdrawn until April 30, 2026. Any balance left after 28 days of inactivity is sent to the linked bank account. Many casino lists online still show it; they are out of date. See [what to use instead of InstaDebit](/guides/instadebit-shut-down-alternatives/).
 
 ## How long does a casino withdrawal take?
 
