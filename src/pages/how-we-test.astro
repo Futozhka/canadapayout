@@ -5,7 +5,7 @@ import { breadcrumbSchema } from '../lib';
 
 const crumbs = [
 	{ name: 'Home', href: '/' },
-	{ name: 'How we test', href: '/how-we-test/' },
+	{ name: 'How we research', href: '/how-we-test/' },
 ];
 ---
 
@@ -16,12 +16,13 @@ const crumbs = [
 >
 	<Breadcrumbs crumbs={crumbs} />
 	<h1>How we research and check our information</h1>
-	<p class="lead">Every number on this site comes from a primary source, carries the date we checked it, and is re-checked every three months.</p>
+	<p class="lead">Every fact on this site comes from a named source, primary wherever one exists. Each guide lists its sources with the date we checked them, and we re-check them every three months.</p>
 
 	<h2>Where our numbers come from</h2>
 	<ul>
-		<li>Payout times, limits and fees: the casino's own banking and terms pages, and the payment provider's website.</li>
+		<li>Payout times, limits and fees: the casino's own banking and terms pages, and the payment provider's website. If a casino does not publish a number, we do not guess it.</li>
 		<li>Laws and taxes: government and regulator sources, such as Canada.ca, AGCO and iGaming Ontario.</li>
+		<li>Other sources: when no official page covers a point, we use an established specialist site and name it.</li>
 		<li>Player questions: real threads on Reddit and other forums. We use them to decide what to explain, not as a source of facts.</li>
 	</ul>
 
