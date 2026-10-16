@@ -7,7 +7,7 @@ description: 'Withdrawal methods, the rules Ontario casinos must follow, why cas
 h1: 'How to Withdraw Casino Winnings in Canada'
 published: 2026-10-16
 draft: false
-related: ['instadebit-shut-down-alternatives']
+related: ['wagering-requirements-explained', 'instadebit-shut-down-alternatives']
 faq:
   - q: 'Can I cancel a pending withdrawal?'
     a: 'Often, yes, while the request is still pending. At OLG, for example, you open Pending Withdrawals in your account and click Cancel next to the request.'
@@ -63,7 +63,7 @@ Bank transfers are counted in business days, so weekends and holidays add time.
 
 - **Your identity or bank account is not verified yet.** Ontario casinos may pay out only "after the appropriate verifications", and identity checks follow Canada's anti-money-laundering law. At OLG you cannot withdraw until your bank account is verified.
 - **The account is not in your name.** The money must go to an account of which you are a legal holder. A partner's or friend's account will not work. An out-of-date document can also be refused: OLG asks for a bank document dated within the last two months.
-- **A bonus is still active.** If you accepted a bonus, its conditions may limit when you can withdraw. Ontario casinos must show all material conditions of an offer when they first present it, so check what you agreed to. Our [wagering calculator](/tools/wagering-calculator/) shows how much is left to bet.
+- **A bonus is still active.** If you accepted a bonus, its conditions may limit when you can withdraw. Ontario casinos must show all material conditions of an offer when they first present it, so check what you agreed to. Our [wagering calculator](/tools/wagering-calculator/) shows how much is left to bet, and [wagering requirements explained](/guides/wagering-requirements-explained/) covers the rules that can block a withdrawal.
 - **The method you chose is not allowed for this withdrawal.** Some rules tie withdrawals to particular methods. The casino must spell these rules out, so read the Withdrawals section of its terms.
 - **Your bank blocked or limited the payment.** Interac limits are set by your bank.
 
