@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import { SITE_NAME, SITE_INDEXABLE } from '../consts';
+import { SITE_NAME, SITE_INDEXABLE, GOOGLE_SITE_VERIFICATION } from '../consts';
 
 interface Props {
 	title: string;
@@ -23,6 +23,7 @@ const robots = !SITE_INDEXABLE || noindex ? 'noindex,follow' : 'index,follow,max
 <link rel="canonical" href={canonicalURL} />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="sitemap" href="/sitemap-index.xml" />
+{GOOGLE_SITE_VERIFICATION && <meta name="google-site-verification" content={GOOGLE_SITE_VERIFICATION} />}
 
 <meta property="og:site_name" content={SITE_NAME} />
 <meta property="og:type" content={type} />

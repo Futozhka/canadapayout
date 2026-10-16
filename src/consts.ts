@@ -12,6 +12,9 @@ export const AUTHOR = {
 
 // Pre-launch switch. While false, every page carries <meta name="robots" content="noindex,follow">
 // so Google does not index an empty site. Set to true when the first guide is published.
-export const SITE_INDEXABLE = false;
+export const SITE_INDEXABLE = true;
+
+// Google Search Console HTML-tag verification code (content="..." only). Empty = no tag.
+export const GOOGLE_SITE_VERIFICATION = 'b-BZFLJyUtfiCofhsuGcRU43l83-ffiIgndGY-Q6kMw';
 
 export const MIN_AGE = '19+';
