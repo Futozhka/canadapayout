@@ -8,6 +8,8 @@ const SITE = 'https://canadapayout.com';
 export default defineConfig({
 	site: SITE,
 	trailingSlash: 'always',
+	// The whole stylesheet is ~3.5 KB, so inline it: no render-blocking CSS request.
+	build: { inlineStylesheets: 'always' },
 	integrations: [
 		sitemap({
 			filter: (page) => !page.endsWith('/404/'),
