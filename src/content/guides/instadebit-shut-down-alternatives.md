@@ -2,6 +2,8 @@
 # Every fact here comes from a source listed in "Sources" at the end (checked 2026-10-16).
 title: 'InstaDebit Has Shut Down: What to Use Instead in Canada'
 description: 'InstaDebit stopped deposits on February 27, 2026. Key dates, what happened to balances, and the payment methods Canadian casino players can use now.'
+order: 4
+category: 'Payments'
 h1: 'InstaDebit Has Shut Down: What to Use Instead'
 published: 2026-10-16
 draft: false

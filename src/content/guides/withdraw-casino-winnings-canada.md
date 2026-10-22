@@ -4,6 +4,8 @@
 # Operator-specific numbers (pending times, minimums at BetMGM, LeoVegas, 888) are not public and are left out on purpose.
 title: 'How to Withdraw Casino Winnings in Canada (2026 Guide)'
 description: 'Withdrawal methods, the rules Ontario casinos must follow, why cashouts get delayed, and what to do step by step if your withdrawal is stuck.'
+order: 1
+category: 'Withdrawals'
 h1: 'How to Withdraw Casino Winnings in Canada'
 published: 2026-10-16
 updated: 2026-10-22

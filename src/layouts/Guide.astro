@@ -2,8 +2,9 @@
 import type { CollectionEntry } from 'astro:content';
 import Base from './Base.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
+import GuideCard from '../components/GuideCard.astro';
 import { AUTHOR } from '../consts';
-import { getPublishedGuides, breadcrumbSchema, faqSchema, articleSchema, formatDate, absolute } from '../lib';
+import { getPublishedGuides, breadcrumbSchema, faqSchema, articleSchema, formatDate, absolute, readingMinutes } from '../lib';
 
 interface Props { entry: CollectionEntry<'guides'> }
 const { entry } = Astro.props;
@@ -33,7 +34,9 @@ if (faq.length) schema.push(faqSchema(faq));
 	<article class="guide">
 		<h1>{h1 ?? title}</h1>
 		<p class="byline">
-			By the {AUTHOR.name} · Last updated <time datetime={(updated ?? published).toISOString()}>{formatDate(updated ?? published)}</time>
+			<span>By the {AUTHOR.name}</span>
+			<span>Last updated <time datetime={(updated ?? published).toISOString()}>{formatDate(updated ?? published)}</time></span>
+			<span class="mono">{readingMinutes(entry.body)} min read</span>
 		</p>
 		<div class="prose">
 			<slot />
@@ -54,8 +57,8 @@ if (faq.length) schema.push(faqSchema(faq));
 		{relatedGuides.length > 0 && (
 			<aside class="related" aria-labelledby="related">
 				<h2 id="related">Related guides</h2>
-				<ul>
-					{relatedGuides.map((g) => <li><a href={`/guides/${g.id}/`}>{g.data.h1 ?? g.data.title}</a></li>)}
+				<ul class="cards">
+					{relatedGuides.map((g) => <li><GuideCard guide={g} /></li>)}
 				</ul>
 			</aside>
 		)}

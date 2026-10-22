@@ -1,0 +1,15 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { readingMinutes } from '../lib';
+
+interface Props { guide: CollectionEntry<'guides'>; index?: number }
+const { guide, index } = Astro.props;
+const { title, h1, description, category } = guide.data;
+---
+
+<a class="card" href={`/guides/${guide.id}/`}>
+	{index !== undefined && <span class="card-no">{String(index + 1).padStart(2, '0')}</span>}
+	<span class="card-meta"><span>{category ?? 'Guide'}</span><span class="mono">{readingMinutes(guide.body)} min read</span></span>
+	<span class="card-title">{h1 ?? title}</span>
+	<span class="card-desc">{description}</span>
+</a>

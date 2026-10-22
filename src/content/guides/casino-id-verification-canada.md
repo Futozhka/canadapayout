@@ -2,6 +2,8 @@
 # Every fact here comes from a source listed in "Sources" at the end (checked 2026-10-16).
 title: 'Why Online Casinos Ask for ID in Canada (KYC Explained)'
 description: 'Why Canadian online casinos verify your ID, address and bank account, what documents you need, the $10,000 rule, and how to avoid withdrawal delays.'
+order: 2
+category: 'Verification'
 h1: 'Why Online Casinos Ask for ID in Canada'
 published: 2026-10-16
 draft: false

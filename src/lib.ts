@@ -10,7 +10,10 @@ export async function getPublishedGuides() {
 			throw new Error(`Guide "${g.id}" is published but still contains [CHECK] markers. Resolve them or set draft: true.`);
 		}
 	}
-	return all.sort((a, b) => b.data.published.valueOf() - a.data.published.valueOf());
+	return all.sort(
+		(a, b) =>
+			(a.data.order ?? Infinity) - (b.data.order ?? Infinity) || b.data.published.valueOf() - a.data.published.valueOf(),
+	);
 }
 
 export function absolute(path: string, site: URL | undefined) {
@@ -68,4 +71,10 @@ export function articleSchema(opts: {
 
 export function formatDate(d: Date) {
 	return d.toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+
+// Reading time from the Markdown body, at ~200 words a minute.
+export function readingMinutes(body: string | undefined) {
+	const words = (body ?? '').replace(/[#>*_`|\[\]()-]/g, ' ').split(/\s+/).filter(Boolean).length;
+	return Math.max(1, Math.round(words / 200));
 }
