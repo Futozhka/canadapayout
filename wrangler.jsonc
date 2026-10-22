@@ -1,0 +1,15 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "canadapayout",
+	"main": "worker/index.js",
+	"compatibility_date": "2026-09-01",
+	"assets": {
+		"directory": "./dist",
+		"binding": "ASSETS",
+		// The Worker runs first so it can redirect old hostnames before any file is served.
+		"run_worker_first": true,
+		// Unknown URLs get the site's own 404 page with a 404 status.
+		"not_found_handling": "404-page"
+	},
+	"workers_dev": true
+}

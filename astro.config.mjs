@@ -2,8 +2,8 @@
 import sitemap from '@astrojs/sitemap';
 import { defineConfig } from 'astro/config';
 
-// The real address the site opens on. Change it when the custom domain is connected (week 5).
-const SITE = 'https://canadapayout.shinrv2006.workers.dev';
+// The canonical address of the site. The old workers.dev address 301-redirects here (worker/index.js).
+const SITE = 'https://canadapayout.com';
 
 export default defineConfig({
 	site: SITE,
