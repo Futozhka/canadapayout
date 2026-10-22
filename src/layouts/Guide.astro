@@ -22,7 +22,7 @@ const relatedGuides = related
 	.filter((g): g is NonNullable<typeof g> => Boolean(g));
 
 const schema: object[] = [
-	articleSchema({ headline: h1 ?? title, description, url: absolute(url, Astro.site), published, updated }),
+	articleSchema({ headline: h1 ?? title, description, url: absolute(url, Astro.site), published, updated, image: absolute('/og-default.png', Astro.site) }),
 	breadcrumbSchema(crumbs, Astro.site),
 ];
 if (faq.length) schema.push(faqSchema(faq));

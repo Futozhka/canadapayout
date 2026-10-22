@@ -50,6 +50,7 @@ export function articleSchema(opts: {
 	url: string;
 	published: Date;
 	updated?: Date;
+	image?: string;
 }) {
 	return {
 		'@context': 'https://schema.org',
@@ -57,6 +58,7 @@ export function articleSchema(opts: {
 		headline: opts.headline,
 		description: opts.description,
 		mainEntityOfPage: opts.url,
+		...(opts.image ? { image: opts.image } : {}),
 		datePublished: opts.published.toISOString(),
 		dateModified: (opts.updated ?? opts.published).toISOString(),
 		author: { '@type': 'Organization', name: AUTHOR.name },

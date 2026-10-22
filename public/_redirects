@@ -1,0 +1,8 @@
+# Permanent (301) redirects from addresses without a trailing slash to the canonical address with one.
+# Without these rules, Cloudflare's static asset handling answers with a temporary 307.
+/about /about/ 301
+/privacy /privacy/ 301
+/how-we-test /how-we-test/ 301
+/guides /guides/ 301
+/guides/:slug /guides/:slug/ 301
+/tools/:slug /tools/:slug/ 301

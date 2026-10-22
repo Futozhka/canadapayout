@@ -6,6 +6,7 @@ title: 'How to Withdraw Casino Winnings in Canada (2026 Guide)'
 description: 'Withdrawal methods, the rules Ontario casinos must follow, why cashouts get delayed, and what to do step by step if your withdrawal is stuck.'
 h1: 'How to Withdraw Casino Winnings in Canada'
 published: 2026-10-16
+updated: 2026-10-22
 draft: false
 related: ['casino-id-verification-canada', 'wagering-requirements-explained', 'instadebit-shut-down-alternatives']
 faq:
@@ -23,7 +24,7 @@ faq:
     a: 'If you play for fun, generally no. The CRA lists lottery winnings among amounts you do not report on your tax return, unless the prize is income from a business. Interest you later earn on the money is taxable.'
 ---
 
-To withdraw casino winnings in Canada, verify your identity and the bank account you will be paid into, open the cashier, choose a withdrawal method such as Interac e-Transfer or a bank transfer, and submit the amount. The request then sits as "pending" while the casino reviews it, and after approval the payment provider or your bank moves the money. In Ontario there is no fixed deadline: casinos must pay out "as soon as is practicable". A bank transfer from OLG, for example, typically takes 3–5 business days after approval.
+To withdraw (cash out) casino winnings in Canada, verify your identity and the bank account you will be paid into, open the cashier, choose a withdrawal method such as Interac e-Transfer or a bank transfer, and submit the amount. The request then sits as "pending" while the casino reviews it, and after approval the payment provider or your bank moves the money. In Ontario there is no fixed deadline: casinos must pay out "as soon as is practicable". A bank transfer from OLG, for example, typically takes 3–5 business days after approval.
 
 ## How to withdraw, step by step
 
@@ -59,6 +60,12 @@ A withdrawal has two stages, and most "slow payout" complaints are about the fir
 
 Bank transfers are counted in business days, so weekends and holidays add time.
 
+## Can you reverse a withdrawal?
+
+Cancelling a withdrawal while it is still pending is often called a reverse withdrawal. At OLG, for example, you open Pending Withdrawals in your account and click Cancel next to the request.
+
+Do it only if you decide to yourself. In New Jersey, the gaming regulator has said that operators must not ask players, or offer them bonuses, to cancel a withdrawal, because players have the right to receive their funds as quickly as possible. If a casino nudges you to reverse a payout, that is a reason to be careful, not a reason to play on.
+
 ## Why is my withdrawal delayed or declined?
 
 - **Your identity or bank account is not verified yet.** Ontario casinos may pay out only "after the appropriate verifications", and identity checks follow Canada's anti-money-laundering law. At OLG you cannot withdraw until your bank account is verified. See [why online casinos ask for ID](/guides/casino-id-verification-canada/) for what to upload.
@@ -87,7 +94,7 @@ Winning in the United States is different. US casinos usually withhold 30% of ga
 
 ## Sources
 
-We checked every source below on October 16, 2026.
+We checked every source below on October 16, 2026, and the New Jersey bulletin on October 22, 2026.
 
 - AGCO, [Registrar's Standards for Internet Gaming](https://www.agco.ca/en/book/export/html/245361): standards 2.06 (bonus conditions), 5.70 (verification and paying to the player's own account), 5.71 (timing), 5.77–5.78 (fees and withdrawal rules).
 - AGCO, [Internet gaming complaints](https://www.agco.ca/en/lottery-and-gaming/internet-gaming-complaints).
@@ -96,6 +103,7 @@ We checked every source below on October 16, 2026.
 - TaxTips.ca, [US gambling taxes for Canadians](https://www.taxtips.ca/personaltax/us-gambling-taxes.htm).
 - OLG, [Withdraw tutorial](https://www.olg.ca/en/getting-started/withdraw-tutorial.html).
 - Interac, [Consumer FAQ](https://www.interac.ca/en/consumers/support/faq-consumers/).
+- New Jersey Division of Gaming Enforcement, [Director's Advisory Bulletin 2021-01 on withdrawal requests](https://www.nj.gov/oag/ge/docs/Bulletins/WDrequestsolicitation2021.01.pdf) (January 13, 2021).
 - 888casino Canada, [Banking](https://ca.888casino.com/banking/).
 - MuchBetter, [Gaming](https://muchbetter.com/gaming).
 - InstaDebit, [instadebit.com](https://www.instadebit.com/).
