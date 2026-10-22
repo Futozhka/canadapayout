@@ -3,6 +3,8 @@
 # Bonus terms change often: re-check OLG and LeoVegas Ontario terms at every review.
 title: 'Wagering Requirements Explained: Casino Bonuses in Canada'
 description: 'How casino wagering requirements work in Canada, with real Ontario examples, game contribution rates, time limits and the rules that block a withdrawal.'
+order: 3
+category: 'Bonuses'
 h1: 'Wagering Requirements Explained'
 published: 2026-10-16
 draft: false

@@ -1,9 +1,15 @@
 ---
 import Base from '../layouts/Base.astro';
+import GuideCard from '../components/GuideCard.astro';
+import WithdrawalStatus from '../components/WithdrawalStatus.astro';
 import { SITE_NAME, SITE_DESCRIPTION } from '../consts';
-import { getPublishedGuides, absolute } from '../lib';
+import { getPublishedGuides, absolute, formatDate } from '../lib';
 
 const guides = await getPublishedGuides();
+const lastChecked = guides.reduce((d, g) => {
+	const t = g.data.updated ?? g.data.published;
+	return t > d ? t : d;
+}, new Date(0));
 const schema = [
 	{
 		'@context': 'https://schema.org',
@@ -17,37 +23,55 @@ const schema = [
 
 <Base title={`${SITE_NAME}: Casino Withdrawals in Canada, Explained`} description={SITE_DESCRIPTION} schema={schema}>
 	<section class="hero">
-		<h1>Get paid by online casinos in Canada, without the guesswork</h1>
-		<p class="lead">
-			How withdrawals work, which payment methods you can use, what bonus wagering means for your cashout, and what to do
-			when a withdrawal gets stuck. Every fact comes from a named source, primary wherever one exists, with the date we
-			checked it.
-		</p>
+		<div>
+			<p class="eyebrow">Independent guides for Canadian players</p>
+			<h1>Get paid by online casinos in Canada, without the guesswork</h1>
+			<p class="lead">
+				How withdrawals work, which payment methods you can use, what bonus wagering means for your cashout, and what to do
+				when a withdrawal gets stuck.
+			</p>
+			<ul class="trust">
+				<li><a href="/how-we-test/">Every fact from a named source</a></li>
+				{guides.length > 0 && <li>Last updated {formatDate(lastChecked)}</li>}
+				<li>We do not operate any casino</li>
+			</ul>
+		</div>
+		<WithdrawalStatus />
 	</section>
 
 	<section aria-labelledby="guides">
-		<h2 id="guides">Guides</h2>
+		<h2 id="guides">Start here</h2>
 		{guides.length > 0 ? (
 			<ul class="cards">
-				{guides.map((g) => (
-					<li>
-						<a href={`/guides/${g.id}/`}><strong>{g.data.h1 ?? g.data.title}</strong></a>
-						<p>{g.data.description}</p>
-					</li>
-				))}
+				{guides.map((g, i) => <li><GuideCard guide={g} index={i} /></li>)}
+				<li>
+					<a class="card card-tool" href="/tools/wagering-calculator/">
+						<span class="card-no">≈</span>
+						<span class="card-meta"><span>Tool</span><span class="mono">30 sec</span></span>
+						<span class="card-title">Wagering requirement calculator</span>
+						<span class="card-desc">Enter your bonus and the 30x, 35x or 40x requirement and see how much you need to bet before you can withdraw.</span>
+					</a>
+				</li>
 			</ul>
 		) : (
 			<p class="muted">The first guide is in review.</p>
 		)}
 	</section>
 
-	<section aria-labelledby="tools">
-		<h2 id="tools">Tools</h2>
-		<ul class="cards">
-			<li>
-				<a href="/tools/wagering-calculator/"><strong>Wagering requirement calculator</strong></a>
-				<p>Enter your bonus and the 30x, 35x or 40x requirement and see how much you need to bet before you can withdraw.</p>
-			</li>
-		</ul>
+	<section aria-labelledby="methods">
+		<h2 id="methods">Withdrawal methods compared</h2>
+		<div class="table-wrap">
+			<table>
+				<thead>
+					<tr><th>Method</th><th>How the money reaches you</th><th>What we could confirm</th></tr>
+				</thead>
+				<tbody>
+					<tr><td>Interac e-Transfer</td><td>Straight to your Canadian bank account</td><td>Limits are set by your bank, not by Interac</td></tr>
+					<tr><td>Bank transfer (EFT)</td><td>To your verified bank account</td><td>Typically 3–5 business days after approval at OLG</td></tr>
+					<tr><td>InstaDebit</td><td>Not available</td><td><span class="pill">Shut down</span>Deposits ended February 27, 2026</td></tr>
+				</tbody>
+			</table>
+		</div>
+		<p class="small muted">Sources and the full comparison: <a href="/guides/withdraw-casino-winnings-canada/">how to withdraw casino winnings in Canada</a>.</p>
 	</section>
 </Base>

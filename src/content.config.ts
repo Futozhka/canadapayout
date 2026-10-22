@@ -12,6 +12,10 @@ const guides = defineCollection({
 		description: z.string().min(70).max(170),
 		// on-page H1; falls back to title
 		h1: z.string().optional(),
+		// short topic label shown on cards (Withdrawals, Verification, …)
+		category: z.string().optional(),
+		// position in guide lists (1 = first); guides without it come after, newest first
+		order: z.number().optional(),
 		published: z.coerce.date(),
 		updated: z.coerce.date().optional(),
 		// drafts are not built, not in the sitemap, not linked anywhere
