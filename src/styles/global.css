@@ -97,13 +97,16 @@ strong { font-weight: 800; }
 .card-tool .card-no, .card-tool .card-meta, .card-tool .card-desc { color: #d1fae5; }
 
 /* Tables */
-.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 16px; margin: 1.2em 0; }
+.table-wrap { overflow-x: auto; border: 1.5px solid #cbd5e1; border-radius: 16px; margin: 1.2em 0; }
 table { border-collapse: collapse; width: 100%; font-size: 0.95rem; }
-.prose table { display: block; overflow-x: auto; border: 1px solid var(--line); border-radius: 16px; margin: 1.2em 0; }
+.prose table { display: block; overflow-x: auto; border: 1.5px solid #cbd5e1; border-radius: 16px; margin: 1.2em 0; }
 th, td { text-align: left; vertical-align: top; padding: 12px 14px; }
-th { background: var(--surface); color: #475569; font: 600 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
-td { border-top: 1px solid var(--line-soft); }
-td:first-child { font-weight: 600; }
+th { background: var(--night); color: #fff; font: 800 0.88rem var(--font); letter-spacing: 0; white-space: nowrap; }
+td { border-top: 1px solid #cbd5e1; }
+tbody tr:nth-child(even) td { background: var(--surface); }
+td + td, th + th { border-left: 1px solid #cbd5e1; }
+th + th { border-left-color: #334155; }
+td:first-child { font-weight: 700; min-width: 9.5em; }
 
 /* Article */
 .guide { max-width: 760px; }
